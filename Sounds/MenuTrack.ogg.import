@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MenuTrack.ogg-beadf381fe32e2469895bbbba429fb81.oggstr"
+
+[deps]
+
+source_file="res://Sounds/MenuTrack.ogg"
+dest_files=[ "res://.import/MenuTrack.ogg-beadf381fe32e2469895bbbba429fb81.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

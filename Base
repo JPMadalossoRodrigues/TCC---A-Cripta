@@ -1,0 +1,53 @@
+Inimigos:
+	Vida: 30
+	Dano: 10
+	Crit: 15% 
+	Movimentação: 1
+	
+Inimigo Fogo:
+	Vida: 25
+	Dano: 15
+	Crit: 15%
+	Movimentação: 1
+	
+Inimigo Terra: 
+	Vida: 40
+	Dano: 10
+	Crit: 15%
+	Movimentação: 0.5
+
+Inimigo Ar: 
+	Vida: 30
+	Dano: 7
+	Crit: 40%
+	Movimentação: 1
+	
+Inimigo de Agua: ????
+
+Almas:
+Fogo - 200% mais dano em inimigos
+Terra - 50% menos dano levado
+Ar - 35% chance de crit
+Agua - Regenera 5% vida ao turno por 5
+
+Cenarios:
+Cemiterio - 
+Fogo: Esqueleto
+Terra: Arvore
+Ar: Fantasma
+Agua:??
+Boss: Bruxa
+
+Caverna-
+Fogo: Aranha
+Terra: Lobo
+Ar: Morcego
+Agua: Serpente
+Boss: Golen
+
+Seres miticos-
+Fogo: Cerbero
+Terra: Monitauro
+Agua: Sereia
+Ar: Unicornio
+Boss; Tiamat

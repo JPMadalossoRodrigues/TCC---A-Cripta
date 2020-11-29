@@ -76,6 +76,8 @@ var loja_dobro_xp = {
 
 var moedas = 0
 
+var carta = true
+
 func save():
 	var node_data = {
 		"missao_alma_fogo" : missao_alma_fogo,
@@ -92,7 +94,8 @@ func save():
 		"loja_turnos_ar":loja_turnos_ar,
 		"loja_turnos_terra":loja_turnos_terra,
 		"loja_dobro_xp":loja_dobro_xp,
-		"moedas":moedas
+		"moedas":moedas,
+		"carta":carta
 	}   
 	var file = File.new()
 	file.open(FILE_NAME, File.WRITE)
@@ -124,6 +127,7 @@ func load():
 			loja_dobro_xp = data.loja_dobro_xp
 			
 			moedas = data.moedas
+			carta = data.carta
 		else:
 			printerr("Corrupted data!")
 	else:

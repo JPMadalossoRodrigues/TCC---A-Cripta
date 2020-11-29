@@ -26,6 +26,8 @@ onready var tile_map = $Mapa
 onready var timer = $Timer
 onready var sfx = $SFX
 
+
+var carta = 0
 var contagem = 0
 
 var level_atual = 1
@@ -859,6 +861,11 @@ func inicia_jogo():
 		player.turnos_max_ar = 20
 	else:
 		player.turnos_max_ar = 10
+	if Data.carta:
+		$UI/Carta.visible = true
+		pausado = true
+	else:
+		$UI/Carta.visible = false
 
 func atualiza_mapa():
 	var salaAtual = Rect2(-1, -1, -1, -1)
@@ -1536,3 +1543,13 @@ func _on_BtnVida_button_down():
 	$UI/Dados/BtnVida.visible = false
 	$UI/Dados/VlVida.text = "Comprado"
 	vida_extra = true
+
+
+func Carta_continue():
+	if carta == 0:
+		$UI/Carta/Label.text= "Pelo o que eu fiquei sabendo, os inimigos ao morreram, deixam cair suas almas. A espada que você empunha tem o poder de consumir a energia dessas almas. Talvez isso ajude na sua jornada. Preciso que você adentre até o final do cemitério, encontre a cripta de Líllica e destrua a lápide do túmulo para liberar a maldição. Somente assim, então, o reino voltará a ter paz."
+		carta = 1
+	else:
+		$UI/Carta.visible = false
+		Data.carta = false
+		pausado = false

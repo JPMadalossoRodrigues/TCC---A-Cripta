@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=2]
+[gd_scene load_steps=123 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Menus/FourElements.png" type="Texture" id=2]
@@ -795,62 +795,62 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="AtlasTexture" id=52]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=53]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 5 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=54]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=55]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=56]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=57]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 9 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=58]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 9 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=59]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 9 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=60]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=61]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 10 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=62]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 10 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=63]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 10 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=64]
@@ -877,17 +877,17 @@ region = Rect2( 96, 0, 32, 32 )
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -900,17 +900,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -923,17 +923,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -946,17 +946,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -969,17 +969,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -992,17 +992,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -1015,17 +1015,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -1038,17 +1038,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -1061,17 +1061,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -1084,17 +1084,17 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
@@ -1103,13 +1103,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=81]
-size = 22
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 23 )
-
 [sub_resource type="DynamicFont" id=78]
-size = 30
+size = 22
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 23 )
 
@@ -1119,7 +1114,16 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 23 )
 
 [sub_resource type="DynamicFont" id=80]
-size = 8
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 23 )
+
+[sub_resource type="DynamicFont" id=81]
+size = 11
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 25 )
+
+[sub_resource type="DynamicFont" id=82]
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 25 )
 
@@ -1242,6 +1246,7 @@ position = Vector2( -100, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 68 )
 animation = "Ar"
+frame = 1
 playing = true
 centered = false
 
@@ -1251,7 +1256,7 @@ position = Vector2( -80, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 69 )
 animation = "Ar"
-frame = 2
+frame = 3
 playing = true
 centered = false
 
@@ -1261,7 +1266,7 @@ position = Vector2( -60, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 70 )
 animation = "Ar"
-frame = 2
+frame = 3
 playing = true
 centered = false
 
@@ -1271,7 +1276,6 @@ position = Vector2( -40, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 71 )
 animation = "Ar"
-frame = 3
 playing = true
 centered = false
 
@@ -1281,6 +1285,7 @@ position = Vector2( -20, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 72 )
 animation = "Ar"
+frame = 1
 playing = true
 centered = false
 
@@ -1290,7 +1295,6 @@ position = Vector2( 0, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 73 )
 animation = "Ar"
-frame = 3
 playing = true
 centered = false
 
@@ -1300,6 +1304,7 @@ position = Vector2( 20, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 74 )
 animation = "Ar"
+frame = 1
 playing = true
 centered = false
 
@@ -1309,6 +1314,7 @@ position = Vector2( 40, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 75 )
 animation = "Ar"
+frame = 1
 playing = true
 centered = false
 
@@ -1318,7 +1324,6 @@ position = Vector2( 60, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 76 )
 animation = "Ar"
-frame = 3
 playing = true
 centered = false
 
@@ -1328,7 +1333,6 @@ position = Vector2( 80, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 77 )
 animation = "Ar"
-frame = 3
 playing = true
 centered = false
 
@@ -1339,7 +1343,7 @@ margin_top = -97.3214
 margin_right = 17.2137
 margin_bottom = -76.3214
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "HP:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1374,7 +1378,7 @@ margin_bottom = -58.4166
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "100"
 align = 1
 valign = 1
@@ -1391,7 +1395,7 @@ margin_bottom = -57.7776
 grow_horizontal = 0
 grow_vertical = 0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "/"
 align = 1
 valign = 1
@@ -1406,7 +1410,7 @@ margin_top = -78.8883
 margin_right = 25.1004
 margin_bottom = -57.8883
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "100"
 align = 1
 valign = 1
@@ -1421,7 +1425,7 @@ margin_top = -59.3094
 margin_right = 16.1612
 margin_bottom = -38.3094
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "XP:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1458,7 +1462,7 @@ margin_bottom = -20.0744
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "100"
 align = 1
 valign = 1
@@ -1475,7 +1479,7 @@ margin_bottom = -19.6995
 grow_horizontal = 0
 grow_vertical = 0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "/"
 align = 1
 valign = 1
@@ -1490,7 +1494,7 @@ margin_top = -41.3157
 margin_right = 24.4171
 margin_bottom = -20.3157
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "100"
 align = 1
 valign = 1
@@ -1507,7 +1511,7 @@ margin_top = -12.5905
 margin_right = 41.8598
 margin_bottom = 8.4095
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "Pontos:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1521,7 +1525,7 @@ margin_right = 13.8571
 margin_bottom = 8.3441
 rect_min_size = Vector2( 0.5, 0.5 )
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "1"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1534,7 +1538,7 @@ margin_top = 6.03439
 margin_right = -13.6731
 margin_bottom = 20.0344
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "Roubo de vida"
 align = 1
 __meta__ = {
@@ -1548,7 +1552,7 @@ margin_top = 13.7469
 margin_right = -12.5004
 margin_bottom = 34.7469
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "1 Ponto"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1563,7 +1567,7 @@ margin_top = 18.8969
 margin_right = -55.6083
 margin_bottom = -21.9352
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1576,7 +1580,7 @@ margin_top = 6.36534
 margin_right = 204.0
 margin_bottom = 27.3653
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "Alma Aleatoria "
 align = 1
 valign = 1
@@ -1595,7 +1599,7 @@ margin_top = 14.1699
 margin_right = 136.714
 margin_bottom = 34.1699
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "1 Ponto"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1611,7 +1615,7 @@ margin_top = 20.031
 margin_right = 92.747
 margin_bottom = -20.8008
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1624,7 +1628,7 @@ margin_top = 5.59175
 margin_right = 81.5262
 margin_bottom = 26.5918
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "Vida extra"
 align = 1
 __meta__ = {
@@ -1638,7 +1642,7 @@ margin_top = 14.4629
 margin_right = 43.0999
 margin_bottom = 29.4629
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "3 Pontos"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1653,7 +1657,7 @@ margin_top = 19.2724
 margin_right = 14.3303
 margin_bottom = -21.5596
 rect_scale = Vector2( 0.5, 0.5 )
-custom_fonts/font = SubResource( 81 )
+custom_fonts/font = SubResource( 78 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1681,7 +1685,7 @@ margin_left = 235.171
 margin_top = 143.235
 margin_right = 404.171
 margin_bottom = 170.235
-custom_fonts/font = SubResource( 78 )
+custom_fonts/font = SubResource( 79 )
 text = "Voce morreu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1721,7 +1725,7 @@ margin_left = 234.653
 margin_top = 144.888
 margin_right = 399.653
 margin_bottom = 171.888
-custom_fonts/font = SubResource( 79 )
+custom_fonts/font = SubResource( 80 )
 text = "Voce venceu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1740,7 +1744,6 @@ __meta__ = {
 }
 
 [node name="Carta" type="ColorRect" parent="UI"]
-visible = false
 margin_left = 0.238373
 margin_top = -0.629959
 margin_right = 639.238
@@ -1756,14 +1759,14 @@ scale = Vector2( 1.04675, 1.04395 )
 texture = ExtResource( 22 )
 
 [node name="Label" type="Label" parent="UI/Carta"]
-margin_left = 203.184
-margin_top = -104.622
-margin_right = 426.184
-margin_bottom = 351.378
-custom_fonts/font = SubResource( 80 )
+margin_left = 204.306
+margin_top = -112.016
+margin_right = 427.306
+margin_bottom = 343.984
+custom_fonts/font = SubResource( 81 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Olá, bravo guerreiro!
-Sou o Rei de Bandel, Guerodris III. Estou te recrutando para uma emocionante aventura. A vila de Rumin, a oeste, está sendo assolada por uma terrível maldição. Há 200 anos, no cemitério desta vila, foi enterrado o corpo da Bruxa Líllica. Atualmente, os corpos lá enterrados estão se levantando como terríveis monstros e atormentando os moradores locais. Pelo o que eu fiquei sabendo, os inimigos ao morreram, deixam cair suas almas. A espada que você empunha tem o poder de consumir a energia dessas almas. Talvez isso ajude na sua jornada. Preciso que você adentre até o final do cemitério, encontre a cripta de Líllica e destrua a lápide do túmulo para liberar a maldição. Somente assim, então, o reino voltará a ter paz."
+Sou o Rei de Bandel, Guerodris III. Estou te recrutando para uma emocionante aventura. A vila de Rumin, a oeste, está sendo assolada por uma terrível maldição. Há 200 anos, no cemitério desta vila, foi enterrado o corpo da Bruxa Líllica. Atualmente, os corpos lá enterrados estão se levantando como terríveis monstros e atormentando os moradores locais."
 valign = 1
 autowrap = true
 __meta__ = {
@@ -1772,10 +1775,11 @@ __meta__ = {
 
 [node name="ToolButton" type="ToolButton" parent="UI/Carta"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 274.62
-margin_top = 244.46
-margin_right = 343.62
-margin_bottom = 266.46
+margin_left = 272.936
+margin_top = 236.603
+margin_right = 346.936
+margin_bottom = 262.603
+custom_fonts/font = SubResource( 82 )
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1797,3 +1801,4 @@ visible = false
 [connection signal="button_down" from="UI/Dados/BtnVida" to="." method="_on_BtnVida_button_down"]
 [connection signal="button_down" from="UI/Morte/Menu" to="." method="_on_Menu_button_down"]
 [connection signal="button_down" from="UI/Vitoria/Menu" to="." method="_on_Menu_button_down"]
+[connection signal="button_down" from="UI/Carta/ToolButton" to="." method="Carta_continue"]

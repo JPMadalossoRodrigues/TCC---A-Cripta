@@ -11,13 +11,13 @@ const AlmaTerraScene = preload("res://Cenas/AlmaTerra.tscn")
 const LabelScene = preload("res://Cenas/Label.tscn")
 
 const TILE_SIZE = 32
-const LEVEL_SIZE = [Vector2(30,30), Vector2(35,35), Vector2(40,40), Vector2(45,45), Vector2(50,50),Vector2(50,50), Vector2(50,50), Vector2(50,50), Vector2(50,50), Vector2(50,50)]
+const LEVEL_SIZE = [Vector2(30,30), Vector2(35,35), Vector2(40,40), Vector2(45,45), Vector2(50,50), Vector2(50,50), Vector2(50,50), Vector2(50,50), Vector2(50,50), Vector2(50,50)]
 const LEVEL_ROOM = [5,7,9,12,15,15,15,15,15,15]
 const MIN_ROOM_SIZE = 5
 const MAX_ROOM_SIZE = 10
 
 const LEVEL_ENEMY = [5,8,12,18,26,26,26,26,26,26]
-enum Tile { Grama,ChaoClaro,ChaoEscuro,Escada,CantoCDDentro,CantoBDDentro,CantoBEDentro,CantoCEDentro,ParedeCima,ParedeEsquerda,ParedeBaixo,ParedeDireita,PortaAbertaCima,PortaAbertaDireita,PortaAbertaBaixo,PortaAbertaEsquerda,PortaFechadaCima,PortaFechadaEsquerda,PortaFechadaBaixo,PortaFechadaDireita,CantoCDFora,CantoBDFora,CantoBEFora,CantoCEFora}
+enum Tile { Grama,ChaoClaro,ChaoEscuro,Escada,CantoCDDentro,CantoBDDentro,CantoBEDentro,CantoCEDentro,ParedeCima,ParedeEsquerda,ParedeBaixo,ParedeDireita,PortaAbertaCima,PortaAbertaDireita,PortaAbertaBaixo,PortaAbertaEsquerda,PortaFechadaCima,PortaFechadaEsquerda,PortaFechadaBaixo,PortaFechadaDireita,CantoCDFora,CantoBDFora,CantoBEFora,CantoCEFora,CriptaAntiga,CriptaNova}
 enum Elementos { Terra, Agua, Ar, Fogo}
 enum TipoPortas {AbertaCima,AbertaBaixo,AbertaEsquerda,AbertaDireita,FechadaCima,FechadaBaixo,FechadaEsquerda,FechadaDireita}
 enum Telhados{Centro,InferiorDireito,InferiorEsquerdo,SuperiorDireito,SuperiorEsquerdo,Direita,Esquerda,Baixo, Cima}
@@ -48,6 +48,9 @@ var pausado = true
 var destino = Vector2(-1,-1)
 var destino_antigo
 
+var vida_extra = 0
+var alma_aleatoria = false
+var roubo_vida = false
 
 class Alma extends Reference:  
 	var sprite_node
@@ -80,7 +83,7 @@ class Slime extends Reference:
 	var sprite_node
 	var provocado = false
 	var tile
-	var dano = 10
+	var dano = 5
 	var hp = 30
 	var hp_max = 30
 	var nivel
@@ -114,7 +117,8 @@ class Slime extends Reference:
 					if  tile_type == Tile.PortaFechadaCima or tile_type == Tile.PortaFechadaDireita or tile_type == Tile.PortaFechadaBaixo or tile_type == Tile.PortaFechadaEsquerda:
 						block = true
 					if path.size()==2:
-						ataque(_game)
+						if hp > 0:
+							ataque(_game)
 					else:
 						for enemy in _game.ghost:
 							if enemy.tile == move_tile:
@@ -142,6 +146,7 @@ class Slime extends Reference:
 		var alma = Alma.new(_game,tile, Elementos.Agua)
 		_game.almas_chao.append(alma)
 		
+		Data.add_inimigo_agua()
 		_game.slimes.erase(_enemy)
 		sprite_node.queue_free()
 	
@@ -157,7 +162,7 @@ class Slime extends Reference:
 		var PosX = _game.player.tile.x * TILE_SIZE 
 		var PosY = (_game.player.tile.y * TILE_SIZE) - 21
 		txt.position = Vector2(PosX, PosY)
-		txt.set_text("-" + var2str(dano), Color.red)
+		txt.set_text("-" + var2str(dmg), Color.red)
 		_game.add_child(txt) 
 		_game.player.sprite_node.get_node("HP").rect_size.x = TILE_SIZE * _game.player.hp/_game.player.hp_max
 		_game.player.assustado = true
@@ -168,7 +173,7 @@ class Ghost extends Reference:
 	var sprite_node
 	var provocado= false
 	var tile
-	var dano = 10
+	var dano = 5
 	var hp = 30
 	var hp_max = 30
 	var nivel
@@ -203,7 +208,8 @@ class Ghost extends Reference:
 					if  tile_type == Tile.PortaFechadaCima or tile_type == Tile.PortaFechadaDireita or tile_type == Tile.PortaFechadaBaixo or tile_type == Tile.PortaFechadaEsquerda:
 						block = true
 					if path.size()==2:
-						ataque(_game)
+						if hp > 0:
+							ataque(_game)
 					else:
 						for enemy in _game.ghost:
 							if enemy.tile == move_tile:
@@ -231,6 +237,7 @@ class Ghost extends Reference:
 		var alma = Alma.new(_game,tile, Elementos.Ar)
 		_game.almas_chao.append(alma)
 		
+		Data.add_inimigo_ar()
 		_game.ghost.erase(_enemy)
 		sprite_node.queue_free()
 	
@@ -246,7 +253,7 @@ class Ghost extends Reference:
 		var PosX = _game.player.tile.x * TILE_SIZE 
 		var PosY = (_game.player.tile.y * TILE_SIZE) - 21 
 		txt.position = Vector2(PosX, PosY)
-		txt.set_text("-" + var2str(dano), Color.red)
+		txt.set_text("-" + var2str(dmg), Color.red)
 		_game.add_child(txt)
 		_game.player.sprite_node.get_node("HP").rect_size.x = TILE_SIZE * _game.player.hp/_game.player.hp_max
 		_game.player.assustado = true
@@ -257,7 +264,7 @@ class PumpikinHead extends Reference:
 	var sprite_node
 	var provocado = false
 	var tile
-	var dano = 10
+	var dano = 5
 	var hp = 30
 	var hp_max = 30
 	var nivel
@@ -292,7 +299,8 @@ class PumpikinHead extends Reference:
 					if  tile_type == Tile.PortaFechadaCima or tile_type == Tile.PortaFechadaDireita or tile_type == Tile.PortaFechadaBaixo or tile_type == Tile.PortaFechadaEsquerda:
 						block = true
 					if path.size()==2:
-						ataque(_game)
+						if hp > 0:
+							ataque(_game)
 					else:
 						for enemy in _game.ghost:
 							if enemy.tile == move_tile:
@@ -320,7 +328,7 @@ class PumpikinHead extends Reference:
 		var alma = Alma.new(_game,tile, Elementos.Fogo)
 		_game.almas_chao.append(alma)
 		
-		
+		Data.add_inimigo_fogo()
 		_game.pumpikin_head.erase(_enemy)
 		sprite_node.queue_free()
 	
@@ -336,7 +344,7 @@ class PumpikinHead extends Reference:
 		var PosX = _game.player.tile.x * TILE_SIZE 
 		var PosY = (_game.player.tile.y * TILE_SIZE) - 21 
 		txt.position = Vector2(PosX, PosY)
-		txt.set_text("-" + var2str(dano), Color.red)
+		txt.set_text("-" + var2str(dmg), Color.red)
 		_game.add_child(txt)
 		_game.player.sprite_node.get_node("HP").rect_size.x = TILE_SIZE * _game.player.hp/_game.player.hp_max
 		_game.player.assustado = true
@@ -347,7 +355,7 @@ class Plant extends Reference:
 	var sprite_node
 	var provocado = false
 	var tile
-	var dano = 10
+	var dano = 5
 	var hp = 30
 	var hp_max = 30
 	var nivel
@@ -382,7 +390,8 @@ class Plant extends Reference:
 					if  tile_type == Tile.PortaFechadaCima or tile_type == Tile.PortaFechadaDireita or tile_type == Tile.PortaFechadaBaixo or tile_type == Tile.PortaFechadaEsquerda:
 						block = true
 					if path.size()==2:
-						ataque(_game)
+						if hp > 0:
+							ataque(_game)
 					else:
 						for enemy in _game.ghost:
 							if enemy.tile == move_tile:
@@ -404,12 +413,12 @@ class Plant extends Reference:
 			yield(_game.get_tree().create_timer(0.5), "timeout")
 	
 	func morte(_game,_enemy):
+		sprite_node.play("Morte")
 		yield(_game.get_tree().create_timer(1.0), "timeout")
-		
 		var alma = Alma.new(_game,tile, Elementos.Terra)
 		_game.almas_chao.append(alma)
 		
-		
+		Data.add_inimigo_terra()
 		_game.plant.erase(_enemy)
 		sprite_node.queue_free()
 	
@@ -420,18 +429,17 @@ class Plant extends Reference:
 			if _game.player.elemento_ativo == Elementos.Terra:
 				dmg -= dmg/2
 		_game.player.hp = max(0 , _game.player.hp - dmg)
-		yield(_game.get_tree().create_timer(0.5), "timeout")
+		yield(_game.get_tree().create_timer(1), "timeout")
 		var txt = LabelScene.instance()
 		var PosX = _game.player.tile.x * TILE_SIZE 
 		var PosY = (_game.player.tile.y * TILE_SIZE) - 21 
 		txt.position = Vector2(PosX, PosY)
-		txt.set_text("-" + var2str(dano), Color.red)
+		txt.set_text("-" + var2str(dmg), Color.red)
 		_game.add_child(txt)
 		_game.player.sprite_node.get_node("HP").rect_size.x = TILE_SIZE * _game.player.hp/_game.player.hp_max
 		_game.player.assustado = true
 		if _game.player.hp == 0:
 			_game.player.morte(_game)
-		sprite_node.play("Idle")
 
 class Player extends Reference:
 	var sprite_node
@@ -440,12 +448,18 @@ class Player extends Reference:
 	var hp = 100
 	var hp_max = 100
 	var almas = []
+	var almas_max = 10
 	var elemento_ativo
 	var turnos = 0
+	var turnos_max_fogo = 10
+	var turnos_max_terra = 10
+	var turnos_max_agua = 10
+	var turnos_max_ar = 10
 	var nivel
 	var xp
 	var xp_max
-	var pontos
+	var xp_ganho = 10
+	var pontos = 0
 	var assustado = false
 	var turno_ar 
 	
@@ -511,15 +525,6 @@ class Player extends Reference:
 									if alma.tile == proximo_tile:
 										if path.size() == 2:
 											coleta_alma(_game,alma)
-											match alma.elemento:
-												Elementos.Fogo:
-													Data.add_fogo()
-												Elementos.Agua:
-													Data.add_agua()
-												Elementos.Terra:
-													Data.add_terra()
-												Elementos.Ar:
-													Data.add_ar()
 											acao = true
 							if !acao:
 								if proximo_tile.x != tile.x and proximo_tile.y != tile.y:
@@ -546,9 +551,13 @@ class Player extends Reference:
 											_game.mapa[proximo_tile.x][proximo_tile.y] = Tile.PortaAbertaBaixo
 										if _game.mapa[proximo_tile.x][proximo_tile.y] ==Tile.PortaFechadaEsquerda:
 											_game.mapa[proximo_tile.x][proximo_tile.y] = Tile.PortaAbertaEsquerda
-									Tile.Escada:
+									Tile.Escada, Tile.CriptaNova:
 										_game.level_atual +=1
-										_game.cria_level()
+										if _game.level_atual >= _game.LEVEL_SIZE.size():
+												MusicController.stop()
+												_game.get_node("UI").get_node("Vitoria").visible = true
+										else:
+											_game.cria_level()
 							if turnos > 0:
 								if  elemento_ativo == Elementos.Agua:
 									hp += 3
@@ -603,12 +612,17 @@ class Player extends Reference:
 				_game.destino = Vector2(-1,-1)
 	
 	func morte(_game):
-		_game.play("res://Sounds/Death.ogg")
-		MusicController.stop()
-		sprite_node.get_node("Tween").interpolate_property (_game.timer, 'position', Vector3(0,0,0), Vector3(32,0,0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		sprite_node.play("Morte")
-		sprite_node.get_node("Tween").start()
-		_game.get_node("UI").get_node("Morte").visible = true
+		if _game.vida_extra == 1:
+			hp = hp_max/2
+			_game.vida_extra = 2
+			sprite_node.get_node("HP").rect_size.x = TILE_SIZE * hp/hp_max
+		else:
+			sprite_node.get_node("Tween").interpolate_property (_game.timer, 'position', Vector3(0,0,0), Vector3(32,0,0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+			sprite_node.play("Morte")
+			sprite_node.get_node("Tween").start()
+			MusicController.stop()
+			_game.get_node("UI").get_node("Morte").visible = true
+			
 	
 	func ataque(_game,_enemy):
 		var dmg = dano
@@ -625,27 +639,20 @@ class Player extends Reference:
 		var PosX = _enemy.tile.x * TILE_SIZE 
 		var PosY = (_enemy.tile.y * TILE_SIZE) - 21 
 		txt.position = Vector2(PosX, PosY)
-		txt.set_text("-" + var2str(dano), Color.red)
+		txt.set_text("-" + var2str(dmg), Color.red)
 		_game.add_child(txt)
 		
 		if _enemy.hp == 0:
-			xp += 10
-#			txt = LabelScene.instance()
-#			PosX = _enemy.tile.x * TILE_SIZE 
-#			PosY = (_enemy.tile.y * TILE_SIZE) - 21 
-#			txt.position = Vector2(PosX, PosY)
-#			txt.set_text("+10 XP", Color.blue)
+			if _game.roubo_vida:
+				var hp_perdido = hp_max - hp
+				hp = hp_perdido * 0.10
+			xp += xp_ganho
 			_game.add_child(txt)
 			if xp >= xp_max:
 				xp = 0
-				xp_max = xp_max * 2
+				xp_max = xp_max + 50
 				nivel += 1
 				pontos += 1
-#				txt = LabelScene.instance()
-#				PosX = _enemy.tile.x * TILE_SIZE 
-#				PosY = (_enemy.tile.y * TILE_SIZE) - 21 
-#				txt.position = Vector2(PosX, PosY)
-#				txt.set_text("Lvl Up", Color.green)
 			_enemy.morte(_game,_enemy)
 			_game.player.sprite_node.get_node("XP").rect_size.x = TILE_SIZE * _game.player.xp/_game.player.xp_max
 	
@@ -653,7 +660,8 @@ class Player extends Reference:
 		_game.play("res://Sounds/Almas.ogg")
 		sprite_node.get_node("Tween").interpolate_property (_game.timer, 'position', Vector3(0,0,0), Vector3(32,0,0), 1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		sprite_node.get_node("Tween").start()
-		if almas.size() < 10:
+		if almas.size() < almas_max:
+
 			almas.append(_alma)
 			_alma.remove(_game, _alma)
 			if almas.size() == 1:
@@ -675,94 +683,107 @@ class Player extends Reference:
 						sprite_node.get_node("Pix").play("FogoTransicao")
 						yield(_game.get_tree().create_timer(1.0), "timeout")
 						sprite_node.get_node("Pix").play("FogoIdle")
-
+	
 	func usa_alma(_game):
 		if almas.size() > 0:
 			elemento_ativo = almas[0].elemento
+			match elemento_ativo:
+				Elementos.Fogo:
+					Data.add_alma_fogo()
+				Elementos.Agua:
+					Data.add_alma_agua()
+				Elementos.Terra:
+					Data.add_alma_terra()
+				Elementos.Ar:
+					Data.add_alma_ar()
 			match almas[0].elemento:
 				Elementos.Terra:
-					turnos = 10 + (5*Data.missao_terra.nivel) - 5
+					turnos = turnos_max_terra
 					sprite_node.get_node("Pix").play ("TerraTransicao", true)
 					yield(_game.get_tree().create_timer(1.0), "timeout")
-					if almas.size() > 1:
-						match almas[1].elemento:
-							Elementos.Terra:
-								sprite_node.get_node("Pix").play ("TerraTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("TerraIdle")
-							Elementos.Agua:
-								sprite_node.get_node("Pix").play ("AguaTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("AguaIdle")
-							Elementos.Ar:
-								sprite_node.get_node("Pix").play ("ArTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("ArIdle")
-							Elementos.Fogo:
-								sprite_node.get_node("Pix").play ("FogoTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("FogoIdle")
-					else:
-						sprite_node.get_node("Pix").visible = false
 					sprite_node.get_node("Efeito").visible = true
 					sprite_node.get_node("Efeito").play ("Shield")
+					if almas.size() > 1:
+
+						match almas[1].elemento:
+							Elementos.Terra:
+								sprite_node.get_node("Pix").play ("TerraTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("TerraIdle")
+							Elementos.Agua:
+								sprite_node.get_node("Pix").play ("AguaTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("AguaIdle")
+							Elementos.Ar:
+								sprite_node.get_node("Pix").play ("ArTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("ArIdle")
+							Elementos.Fogo:
+								sprite_node.get_node("Pix").play ("FogoTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("FogoIdle")
+					else:
+						sprite_node.get_node("Pix").visible = false
 				Elementos.Agua:
-					turnos = 10 + (5*Data.missao_agua.nivel) - 5
+					turnos = turnos_max_agua
 					sprite_node.get_node("Pix").play ("AguaTransicao", true)
 					yield(_game.get_tree().create_timer(1.0), "timeout")
-					if almas.size() > 1:
-						match almas[1].elemento:
-							Elementos.Terra:
-								sprite_node.get_node("Pix").play ("TerraTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("TerraIdle")
-							Elementos.Agua:
-								sprite_node.get_node("Pix").play ("AguaTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("AguaIdle")
-							Elementos.Ar:
-								sprite_node.get_node("Pix").play ("ArTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("ArIdle")
-							Elementos.Fogo:
-								sprite_node.get_node("Pix").play ("FogoTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("FogoIdle")
-					else:
-						sprite_node.get_node("Pix").visible = false
 					sprite_node.get_node("Efeito").visible = true
 					sprite_node.get_node("Efeito").play ("Heal")
+					if almas.size() > 1:
+						match almas[1].elemento:
+							Elementos.Terra:
+								sprite_node.get_node("Pix").play ("TerraTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("TerraIdle")
+							Elementos.Agua:
+								sprite_node.get_node("Pix").play ("AguaTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("AguaIdle")
+							Elementos.Ar:
+								sprite_node.get_node("Pix").play ("ArTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("ArIdle")
+							Elementos.Fogo:
+								sprite_node.get_node("Pix").play ("FogoTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("FogoIdle")
+					else:
+						sprite_node.get_node("Pix").visible = false
 				Elementos.Ar:
 					turno_ar = true
-					turnos = 10 + (5*Data.missao_ar.nivel) - 5
+					turnos = turnos_max_ar
 					sprite_node.get_node("Pix").play ("ArTransicao", true)
 					yield(_game.get_tree().create_timer(1.0), "timeout")
-					if almas.size() > 1:
-						match almas[1].elemento:
-							Elementos.Terra:
-								sprite_node.get_node("Pix").play ("TerraTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("TerraIdle")
-							Elementos.Agua:
-								sprite_node.get_node("Pix").play ("AguaTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("AguaIdle")
-							Elementos.Ar:
-								sprite_node.get_node("Pix").play ("ArTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("ArIdle")
-							Elementos.Fogo:
-								sprite_node.get_node("Pix").play ("FogoTransicao")
-								yield(_game.get_tree().create_timer(1.0), "timeout")
-								sprite_node.get_node("Pix").play ("FogoIdle")
-					else:
-						sprite_node.get_node("Pix").visible = false
 					sprite_node.get_node("Efeito").visible = true
 					sprite_node.get_node("Efeito").play ("Speed")
+					if almas.size() > 1:
+						
+						match almas[1].elemento:
+							Elementos.Terra:
+								sprite_node.get_node("Pix").play ("TerraTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("TerraIdle")
+							Elementos.Agua:
+								sprite_node.get_node("Pix").play ("AguaTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("AguaIdle")
+							Elementos.Ar:
+								sprite_node.get_node("Pix").play ("ArTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("ArIdle")
+							Elementos.Fogo:
+								sprite_node.get_node("Pix").play ("FogoTransicao")
+								yield(_game.get_tree().create_timer(1.0), "timeout")
+								sprite_node.get_node("Pix").play ("FogoIdle")
+					else:
+						sprite_node.get_node("Pix").visible = false
 				Elementos.Fogo:
-					turnos = 10 + (5*Data.missao_fogo.nivel) - 5
+					turnos = turnos_max_fogo
 					sprite_node.get_node("Pix").play ("FogoTransicao", true)
 					yield(_game.get_tree().create_timer(1.0), "timeout")
+					sprite_node.get_node("Efeito").visible = true
+					sprite_node.get_node("Efeito").play ("Atack")
 					if almas.size() > 1:
 						match almas[1].elemento:
 							Elementos.Terra:
@@ -783,8 +804,6 @@ class Player extends Reference:
 								sprite_node.get_node("Pix").play ("FogoIdle")
 					else:
 						sprite_node.get_node("Pix").visible = false
-					sprite_node.get_node("Efeito").visible = true
-					sprite_node.get_node("Efeito").play ("Atack")
 			var temp = almas[0]
 			almas.erase(temp)
 
@@ -792,25 +811,20 @@ func _ready():
 	inicia_jogo()
 
 func _input(event):
-	print("input")
 	if event is InputEventMouseButton:
-		print("Evento")
 		if event.button_index == BUTTON_LEFT and event.pressed:
-			print("Clicou" + var2str(pausado) + "/" + var2str(player.hp) )
 			if player.hp > 0 and !pausado:
-				print("Acao")
 				var click = get_global_mouse_position()
 				var temp = Vector2(click.x as int/TILE_SIZE,click.y as int/TILE_SIZE)
 				destino = temp
 
 func _process(delta):
 	var click = get_global_mouse_position()
-	#print(Vector2(click.x as int/TILE_SIZE,click.y as int/TILE_SIZE))
 	if !pausado and destino != Vector2(-1,-1):
 		player.acao(self,Vector2(destino.x,destino.y))
+		call_deferred("atualiza_mapa")
 	else:
 		player.sprite_node.play("Idle")
-	call_deferred("atualiza_mapa")
 	call_deferred("atualiza_inimigos")
  
 func inicia_jogo():
@@ -822,7 +836,29 @@ func inicia_jogo():
 	$UI/Pause.visible = false
 	$UI/Morte.visible = false
 	cria_level()
+	call_deferred("atualiza_mapa")
+	call_deferred("atualiza_inimigos")
 	player.assustado = false
+	if Data.loja_dobro_xp.comprado:
+		player.xp_ganho = 20
+	if Data.loja_inicia_ponto.comprado:
+		player.pontos = 1
+	if Data.loja_turnos_fogo.comprado:
+		player.turnos_max_fogo = 20
+	else:
+		player.turnos_max_fogo = 10
+	if Data.loja_turnos_terra.comprado:
+		player.turnos_max_terra = 20
+	else:
+		player.turnos_max_terra = 10
+	if Data.loja_turnos_agua.comprado:
+		player.turnos_max_agua = 20
+	else:
+		player.turnos_max_agua = 10
+	if Data.loja_turnos_ar.comprado:
+		player.turnos_max_ar = 20
+	else:
+		player.turnos_max_ar = 10
 
 func atualiza_mapa():
 	var salaAtual = Rect2(-1, -1, -1, -1)
@@ -844,7 +880,7 @@ func atualiza_mapa():
 			for telhados in telhado:
 				if telhados.position == Vector2(x,y) * TILE_SIZE:
 						telhados.modulate.a = 0
-	
+
 func atualiza_inimigos():
 	var player_centro = Vector2((player.tile.x + 0.5) * TILE_SIZE,(player.tile.y + 0.5) * TILE_SIZE)
 	var space_state = get_world_2d().direct_space_state
@@ -926,7 +962,7 @@ func cria_level():
 	telhado.clear()
 	
 	for alma in almas_chao:
-		alma.queue_free()
+		alma.sprite_node.queue_free()
 	almas_chao.clear()
 	
 	level_size = LEVEL_SIZE[level_atual]
@@ -953,11 +989,18 @@ func cria_level():
 	else:
 		player.tile = Vector2(player_x,player_y)
 		player.sprite_node.position = player.tile * TILE_SIZE
-	
+	if alma_aleatoria:
+		var alma_x = sala_inicial.position.x + 1 + randi() % int(sala_inicial.size.x - 2)
+		var alma_y = sala_inicial.position.y + 1 + randi() % int(sala_inicial.size.y - 2)
+		var alma = Alma.new(self,Vector2(alma_x,alma_y), randi()%4)
+		almas_chao.append(alma)
 	var sala_final = salas.back()
 	var escada_x = sala_final.position.x + 1 + randi() % int(sala_final.size.x - 2)
 	var escada_y = sala_final.position.y + 1 + randi() % int(sala_final.size.y - 2)
-	mapa[escada_x][escada_y] = Tile.Escada
+	if level_atual >= LEVEL_SIZE.size():
+		mapa[escada_x][escada_y] = Tile.CriptaNova
+	else:
+		mapa[escada_x][escada_y] = Tile.Escada
 	call_deferred("atualiza")
 	
 	for i in range(LEVEL_ENEMY[level_atual]):
@@ -1281,6 +1324,7 @@ func add_tile(_tile):
 		pathfinding.connect_points(points,novo_ponto)
 
 func _Pause_Continue():
+	destino = Vector2(-1,-1)
 	pausado = false
 	$UI/Pause.visible = false
 	$UI/Dados.visible = false
@@ -1294,40 +1338,170 @@ func _Pause__Sair():
 	get_tree().quit()
 
 func _Pausar():
-	pausado = true
-	$UI/Pause.visible = true
-	
+	if !pausado:
+		destino = Vector2(-1,-1)
+		pausado = true
+		$UI/Pause.visible = true
+
 func UsarAlma():
-	player.usa_alma(self)
-	player.sprite_node.queue_free()
-	sfx.stop()
-	inicia_jogo()
+	if !pausado:
+		destino = Vector2(-1,-1)
+		player.usa_alma(self)
 
 func _on_Menu_button_down():
+	Data.save()
 	MusicController.play("res://Sounds/MenuTrack.ogg")
 	get_tree().change_scene("res://Cenas/Menu.tscn")
 
-func _on_BtnHP_button_down():
-	player.hp += 10
-	player.pontos -= 1
-
-func _on_BtnDano_button_down():
-	player.dano += 1
-	player.pontos -= 1
-
 func _on_DadosBtn_button_down():
-	pausado = true
-	$UI/Dados.visible = true
-	$UI/Dados/Dano.text = var2str(int(player.dano))
-	$UI/Dados/HP.text = var2str(int(player.hp)) + "/" + var2str(int(player.hp_max)) 
-	$UI/Dados/XP.text = var2str(int(player.xp)) + "/" + var2str(int(player.xp_max))
-	$UI/Dados/Pontos.text = var2str(int(player.pontos))
-	if player.pontos == 0:
-		$UI/Dados/BtnDano.disabled = true
-		$UI/Dados/BtnHP.disabled = true
-	else:
-		$UI/Dados/BtnDano.disabled = false
-		$UI/Dados/BtnHP.disabled = false
+	if !pausado:
+		destino = Vector2(-1,-1)
+		pausado = true
+		$UI/Dados.visible = true
+		$UI/Dados/HPAtual.text = var2str(int(player.hp)) 
+		$UI/Dados/HPMax.text = var2str(int(player.hp_max)) 
+		$UI/Dados/XPAtual.text = var2str(int(player.xp)) 
+		$UI/Dados/XPMax.text = var2str(int(player.xp_max)) 
+		$UI/Dados/Pontos.text = var2str(int(player.pontos))
+		$UI/Dados/BarraHP.rect_size.x = 200 * player.hp/player.hp_max
+		$UI/Dados/BarraXP.rect_size.x = 200 * player.xp/player.xp_max
+		
+		if roubo_vida == true:
+			$UI/Dados/BtnRouboVida.visible = false
+			$UI/Dados/VlRouboVIda.text = "Comprado"
+		if alma_aleatoria == true:
+			$UI/Dados/BtnAlma.visible = false
+			$UI/Dados/VlAlma.text = "Comprado"
+		if vida_extra != 0:
+			$UI/Dados/BtnVida.visible = false
+			$UI/Dados/VlVida.text = "Comprado"
+		
+		if player.pontos < 1:
+			$UI/Dados/BtnRouboVida.disabled = true
+			$UI/Dados/BtnAlma.disabled = true
+		if player.pontos < 3:
+			$UI/Dados/BtnVida.disabled = true
+		
+		if player.almas.size() > 0:
+			match player.almas[0].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma1.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma1.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma1.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma1.animation = "Ar"
+		else:
+			$UI/Dados/Alma1.visible = false
+		if player.almas.size() > 1:
+			match player.almas[1].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma2.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma2.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma2.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma2.animation = "Ar"
+		else:
+			$UI/Dados/Alma2.visible = false
+		if player.almas.size() > 2:
+			match player.almas[2].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma3.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma3.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma3.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma3.animation = "Ar"
+		else:
+			$UI/Dados/Alma3.visible = false
+		if player.almas.size() > 3:
+			match player.almas[3].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma4.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma4.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma4.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma4.animation = "Ar"
+		else:
+			$UI/Dados/Alma4.visible = false
+		if player.almas.size() > 4:
+			match player.almas[4].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma5.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma5.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma5.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma5.animation = "Ar"
+		else:
+			$UI/Dados/Alma5.visible = false
+		if player.almas.size() > 5:
+			match player.almas[5].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma6.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma6.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma6.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma6.animation = "Ar"
+		else:
+			$UI/Dados/Alma6.visible = false
+		if player.almas.size() > 6:
+			match player.almas[6].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma7.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma7.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma7.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma7.animation = "Ar"
+		else:
+			$UI/Dados/Alma7.visible = false
+		if player.almas.size() > 7:
+			match player.almas[7].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma8.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma8.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma8.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma8.animation = "Ar"
+		else:
+			$UI/Dados/Alma8.visible = false
+		if player.almas.size() > 8:
+			match player.almas[8].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma9.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma9.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma9.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma9.animation = "Ar"
+		else:
+			$UI/Dados/Alma9.visible = false
+		if player.almas.size() > 9:
+			match player.almas[9].elemento:
+				Elementos.Terra:
+					$UI/Dados/Alma10.animation = "Terra"
+				Elementos.Agua:
+					$UI/Dados/Alma10.animation = "Agua"
+				Elementos.Fogo:
+					$UI/Dados/Alma10.animation = "Fogo"
+				Elementos.Ar:
+					$UI/Dados/Alma10.animation = "Ar"
+		else:
+			$UI/Dados/Alma10.visible = false
 
 func play(track_url : String):
 	stop()
@@ -1339,3 +1513,26 @@ func play(track_url : String):
 func stop():
 	sfx.stop()
 
+func _on_BtnRouboVida_button_down():
+	destino = Vector2(-1,-1)
+	player.pontos-=1
+	$UI/Dados/Pontos.text = var2str(int(player.pontos))
+	$UI/Dados/BtnRouboVida.visible = false
+	$UI/Dados/VlRouboVIda.text = "Comprado"
+	roubo_vida = true
+
+func _on_BtnAlma_button_down():
+	destino = Vector2(-1,-1)
+	player.pontos-=1
+	$UI/Dados/Pontos.text = var2str(int(player.pontos))
+	$UI/Dados/BtnAlma.visible = false
+	$UI/Dados/VlAlma.text = "Comprado"
+	alma_aleatoria = true
+
+func _on_BtnVida_button_down():
+	destino = Vector2(-1,-1)
+	player.pontos-=3
+	$UI/Dados/Pontos.text = var2str(int(player.pontos))
+	$UI/Dados/BtnVida.visible = false
+	$UI/Dados/VlVida.text = "Comprado"
+	vida_extra = true

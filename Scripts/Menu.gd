@@ -23,3 +23,7 @@ func _on_Creditos_button_down():
 func _on_Sair_button_down():
 	Data.save()
 	get_tree().quit()
+
+
+func _on_Loja_button_down():
+	get_tree().change_scene("res://Cenas/Loja.tscn")

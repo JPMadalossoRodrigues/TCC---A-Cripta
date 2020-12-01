@@ -28,7 +28,7 @@ onready var sfx = $SFX
 var carta = 0
 var contagem = 0
 
-var level_atual = 1
+var level_atual 
 var level_size
 var mapa = []
 var salas = []
@@ -474,6 +474,7 @@ class Player extends Reference:
 		sprite_node.get_node("XP").rect_size.x = TILE_SIZE * xp/xp_max
 		sprite_node.position = _tile * TILE_SIZE
 		_game.add_child(sprite_node)
+		print(_game.level_atual)
 	
 	func acao(_game,_destino):
 		if assustado:
@@ -553,11 +554,11 @@ class Player extends Reference:
 										if _game.mapa[proximo_tile.x][proximo_tile.y] ==Tile.PortaFechadaEsquerda:
 											_game.mapa[proximo_tile.x][proximo_tile.y] = Tile.PortaAbertaEsquerda
 									Tile.Escada, Tile.CriptaNova:
-										_game.level_atual +=1
-										if _game.level_atual >= _game.LEVEL_SIZE.size():
+										if tile_type == Tile.CriptaNova:
 												MusicController.stop()
 												_game.get_node("UI").get_node("Vitoria").visible = true
 										else:
+											_game.level_atual =+ 1
 											_game.cria_level()
 							if turnos > 0:
 								if  elemento_ativo == Elementos.Agua:
@@ -1001,7 +1002,7 @@ func cria_level():
 	var sala_final = salas.back()
 	var escada_x = sala_final.position.x + 1 + randi() % int(sala_final.size.x - 2)
 	var escada_y = sala_final.position.y + 1 + randi() % int(sala_final.size.y - 2)
-	if level_atual >= LEVEL_SIZE.size():
+	if level_atual >= LEVEL_SIZE.size() -1:
 		mapa[escada_x][escada_y] = Tile.CriptaNova
 	else:
 		mapa[escada_x][escada_y] = Tile.Escada
@@ -1308,7 +1309,7 @@ func atualiza_caminho():
 		for y in range(level_size.y):
 			var tile = mapa[x][y]
 			var _tile = Vector2(x,y)
-			if tile ==Tile.ChaoClaro or tile ==Tile.ChaoEscuro or tile == Tile.PortaAbertaCima or tile == Tile.PortaAbertaDireita or tile == Tile.PortaAbertaBaixo or tile == Tile.PortaAbertaEsquerda or tile == Tile.PortaFechadaDireita or tile == Tile.PortaFechadaCima or tile == Tile.PortaFechadaBaixo or tile == Tile.PortaFechadaEsquerda or tile == Tile.Escada:
+			if tile ==Tile.ChaoClaro or tile ==Tile.ChaoEscuro or tile == Tile.PortaAbertaCima or tile == Tile.PortaAbertaDireita or tile == Tile.PortaAbertaBaixo or tile == Tile.PortaAbertaEsquerda or tile == Tile.PortaFechadaDireita or tile == Tile.PortaFechadaCima or tile == Tile.PortaFechadaBaixo or tile == Tile.PortaFechadaEsquerda or tile == Tile.Escada or tile == Tile.CriptaNova:
 				add_tile(_tile)
 
 func add_tile(_tile):

@@ -795,104 +795,104 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="AtlasTexture" id=52]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=53]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=54]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=55]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 10 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=56]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=57]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 5 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=58]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=59]
 flags = 4
-atlas = ExtResource( 9 )
+atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=60]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=61]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 9 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=62]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 9 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=63]
 flags = 4
-atlas = ExtResource( 8 )
+atlas = ExtResource( 9 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=64]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=65]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=66]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=67]
 flags = 4
-atlas = ExtResource( 10 )
+atlas = ExtResource( 8 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=68]
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -900,22 +900,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -923,22 +923,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -946,22 +946,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -969,22 +969,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -992,22 +992,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -1015,22 +1015,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -1038,22 +1038,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -1061,22 +1061,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -1084,22 +1084,22 @@ animations = [ {
 animations = [ {
 "frames": [ SubResource( 52 ), SubResource( 53 ), SubResource( 54 ), SubResource( 55 ) ],
 "loop": true,
-"name": "Agua",
+"name": "Ar",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ) ],
 "loop": true,
-"name": "Terra",
+"name": "Agua",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
 "loop": true,
-"name": "Fogo",
+"name": "Terra",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ) ],
 "loop": true,
-"name": "Ar",
+"name": "Fogo",
 "speed": 5.0
 } ]
 
@@ -1246,6 +1246,7 @@ position = Vector2( -100, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 68 )
 animation = "Ar"
+frame = 3
 playing = true
 centered = false
 
@@ -1255,7 +1256,7 @@ position = Vector2( -80, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 69 )
 animation = "Ar"
-frame = 2
+frame = 1
 playing = true
 centered = false
 
@@ -1265,7 +1266,7 @@ position = Vector2( -60, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 70 )
 animation = "Ar"
-frame = 2
+frame = 1
 playing = true
 centered = false
 
@@ -1275,7 +1276,7 @@ position = Vector2( -40, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 71 )
 animation = "Ar"
-frame = 3
+frame = 2
 playing = true
 centered = false
 
@@ -1285,6 +1286,7 @@ position = Vector2( -20, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 72 )
 animation = "Ar"
+frame = 3
 playing = true
 centered = false
 
@@ -1294,7 +1296,7 @@ position = Vector2( 0, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 73 )
 animation = "Ar"
-frame = 3
+frame = 2
 playing = true
 centered = false
 
@@ -1304,6 +1306,7 @@ position = Vector2( 20, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 74 )
 animation = "Ar"
+frame = 3
 playing = true
 centered = false
 
@@ -1313,6 +1316,7 @@ position = Vector2( 40, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 75 )
 animation = "Ar"
+frame = 3
 playing = true
 centered = false
 
@@ -1322,7 +1326,7 @@ position = Vector2( 60, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 76 )
 animation = "Ar"
-frame = 3
+frame = 2
 playing = true
 centered = false
 
@@ -1332,7 +1336,7 @@ position = Vector2( 80, -120.766 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 77 )
 animation = "Ar"
-frame = 3
+frame = 2
 playing = true
 centered = false
 

@@ -19,8 +19,6 @@ const MAX_ROOM_SIZE = 10
 const LEVEL_ENEMY = [5,8,12,18,26,26,26,26,26,26]
 enum Tile { Grama,ChaoClaro,ChaoEscuro,Escada,CantoCDDentro,CantoBDDentro,CantoBEDentro,CantoCEDentro,ParedeCima,ParedeEsquerda,ParedeBaixo,ParedeDireita,PortaAbertaCima,PortaAbertaDireita,PortaAbertaBaixo,PortaAbertaEsquerda,PortaFechadaCima,PortaFechadaEsquerda,PortaFechadaBaixo,PortaFechadaDireita,CantoCDFora,CantoBDFora,CantoBEFora,CantoCEFora,CriptaAntiga,CriptaNova}
 enum Elementos { Terra, Agua, Ar, Fogo}
-enum TipoPortas {AbertaCima,AbertaBaixo,AbertaEsquerda,AbertaDireita,FechadaCima,FechadaBaixo,FechadaEsquerda,FechadaDireita}
-enum Telhados{Centro,InferiorDireito,InferiorEsquerdo,SuperiorDireito,SuperiorEsquerdo,Direita,Esquerda,Baixo, Cima}
 
 onready var tile_map = $Mapa
 onready var timer = $Timer
@@ -89,6 +87,7 @@ class Slime extends Reference:
 	var hp = 30
 	var hp_max = 30
 	var nivel
+	
 	func _init(_game,_tile):
 		if _game.level_atual == 1:
 			nivel = 1
@@ -624,7 +623,6 @@ class Player extends Reference:
 			sprite_node.get_node("Tween").start()
 			MusicController.stop()
 			_game.get_node("UI").get_node("Morte").visible = true
-			
 	
 	func ataque(_game,_enemy):
 		var dmg = dano
@@ -821,7 +819,6 @@ func _input(event):
 				destino = temp
 
 func _process(delta):
-	var click = get_global_mouse_position()
 	if !pausado and destino != Vector2(-1,-1):
 		player.acao(self,Vector2(destino.x,destino.y))
 		call_deferred("atualiza_mapa")
@@ -1092,7 +1089,7 @@ func add_sala(_tiles_livres):
 		sprite.z_index = 5
 		telhado.append(sprite)
 		self.add_child(sprite)
-
+	
 	for y in range(pos_y + 1, pos_y + size_y - 1):
 		mapa[pos_x][y] = Tile.ParedeDireita
 		sprite = Sprite.new()
@@ -1119,6 +1116,7 @@ func add_sala(_tiles_livres):
 			sprite.z_index = 5
 			telhado.append(sprite)
 			self.add_child(sprite)
+	
 	mapa[pos_x][pos_y] = Tile.CantoCEFora
 	sprite = Sprite.new()
 	sprite.texture = load("res://Sprites/Tiles/TelhadoCantoSuperiorEsquerdo.png")
@@ -1386,8 +1384,14 @@ func _on_DadosBtn_button_down():
 		if player.pontos < 1:
 			$UI/Dados/BtnRouboVida.disabled = true
 			$UI/Dados/BtnAlma.disabled = true
+		else:
+			$UI/Dados/BtnRouboVida.disabled = false
+			$UI/Dados/BtnAlma.disabled = false
 		if player.pontos < 3:
 			$UI/Dados/BtnVida.disabled = true
+		else:
+			$UI/Dados/BtnVida.disabled = false
+			
 		
 		if player.almas.size() > 0:
 			match player.almas[0].elemento:
